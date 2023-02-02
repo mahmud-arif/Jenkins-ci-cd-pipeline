@@ -3,7 +3,7 @@
 library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
     [$class: 'GitSCMSource',
      remote: 'https://github.com/mahmud-arif/jenkins-shared-library.git',
-     credentialsId: 'gitlab-credentials'
+     credentialsId: 'github-credentials'
     ]
 )
 
@@ -13,7 +13,7 @@ pipeline {
         maven 'Maven'
     }
     environment {
-        IMAGE_NAME = 'nanajanashia/demo-app:java-maven-2.0'
+        IMAGE_NAME = 'mahmudarif/demo-app:java-maven-2.0'
     }
     stages {
         stage('build app') {
