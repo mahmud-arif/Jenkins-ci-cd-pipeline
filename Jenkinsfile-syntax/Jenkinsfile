@@ -20,23 +20,27 @@ pipeline{
           }
         }
         stage("Build"){
-            
+            // when {
+            //   expression {
+            //     BRANCH_NAME == 'dev' && CODE_CHANGES == true
+            //   }
+            // }
             steps{
-                
+                // echo "========executing Build======"
                 script {
                    gv.buildApp()
                 }
             }
         }
         stage("test"){
-            when {
-                expresseion {
-                    params.executeTests
-                  }
+          when {
+                expression{
+                  params.executeTests
+                }
               }
             steps{
               
-                
+                // echo "========executing test========"
                 script {
                   gv.testApp() 
                 }
@@ -44,11 +48,18 @@ pipeline{
         }
         stage("deploy"){
             steps{
-                
+                echo "========executing deploy========"
                 script {
                    gv.deployApp()
                 }
-                
+                // echo "deploy with ${SERVER_CREDENTIALS} "
+                // withCredentials([
+                //   usernamePassword('server-credentials', usernameVariable: USER, usernamePassword: PWD )
+                // ]){
+                //   sh "some script ${USER} and ${PWD}"
+                // }
+
+                // echo 'deploying version ${params.VERSION}'
             }
         }
     }
