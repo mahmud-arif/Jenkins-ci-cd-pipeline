@@ -33,12 +33,13 @@ pipeline{
             }
         }
         stage("test"){
-            steps{
-              when {
-                expresseion {
-                  params.executeTests
+            when {
+                  expresseion {
+                    params.executeTests
+                  }
                 }
-              }
+            steps{
+              
                 // echo "========executing test========"
                 script {
                   gv.testApp() 
