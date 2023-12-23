@@ -59,7 +59,7 @@
 //     }
 // }
 
-def gv
+// def gv
 
 pipeline {
     agent any
@@ -68,10 +68,10 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    gv = load "/Jenkinsfile-syntanx/script.groovy"
+                   def gv = load "script.groovy"
                     gv.buildApp()
-                    gv.testApp()
-                    gv.deployApp()
+                    // gv.testApp()
+                    // gv.deployApp()
                 }
             }
         }
