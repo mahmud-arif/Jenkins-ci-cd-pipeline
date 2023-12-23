@@ -67,9 +67,10 @@ pipeline {
     stages {
         stage("init") {
             steps {
+                echo 'Hello world'
                 script {
                    def gv = load "script.groovy"
-                    gv.buildApp()
+                    // gv.buildApp()
                     // gv.testApp()
                     // gv.deployApp()
                 }
