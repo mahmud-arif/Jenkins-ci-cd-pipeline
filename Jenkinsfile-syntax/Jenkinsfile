@@ -27,9 +27,9 @@ pipeline{
             // }
             steps{
                 echo "========executing Build======"
-                // script {
-                //    gv.buildApp()
-                // }
+                script {
+                   gv.buildApp()
+                }
             }
         }
         stage("test"){
