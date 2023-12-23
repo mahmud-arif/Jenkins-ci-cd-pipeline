@@ -49,9 +49,9 @@ pipeline{
         stage("deploy"){
             steps{
                 echo "========executing deploy========"
-                script {
+                // script {
                    // gv.deployApp()
-                }
+                // }
                 // echo "deploy with ${SERVER_CREDENTIALS} "
                 // withCredentials([
                 //   usernamePassword('server-credentials', usernameVariable: USER, usernamePassword: PWD )
