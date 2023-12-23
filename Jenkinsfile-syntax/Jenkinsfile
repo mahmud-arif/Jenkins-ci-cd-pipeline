@@ -16,6 +16,7 @@ pipeline{
           steps {
             script {
               gv = load "script.groovy"
+              gv.buildApp()
               echo "Value of gv: ${gv}"
             }
           }
