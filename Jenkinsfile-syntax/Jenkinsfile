@@ -89,8 +89,10 @@ pipeline {
             steps {
                 script {
                     // Load the Groovy script
-                    def loadedScript = load "/Jenkinsfile-syntax/script.groovy"
-                    loadedScript.buildApp()
+                    def scriptPath = "Jenkinsfile-syntax/script.groovy"
+                    def absolutePath = pwd() + '/' + scriptPath
+                    def loadedScript = load absolutePath
+                     loadedScript.buildApp()
 
                     // Check if the buildApp method is defined in the loaded script
                     if (loadedScript.respondsTo("buildApp")) {
