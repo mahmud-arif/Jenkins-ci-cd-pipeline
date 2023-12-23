@@ -68,7 +68,7 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    gv = load "./Jenkinsfile-syntanx/script.groovy"
+                    gv = load "/Jenkinsfile-syntanx/script.groovy"
                     gv.buildApp()
                     gv.testApp()
                     gv.deployApp()
