@@ -61,21 +61,47 @@
 
 // def gv
 
+// pipeline {
+//     agent any
+
+//     stages {
+//         stage("init") {
+//             steps {
+//                 echo 'Hello world'
+//                 script {
+//                    def gv = load "script.groovy"
+//                     // gv.buildApp()
+//                     // gv.testApp()
+//                     // gv.deployApp()
+//                 }
+//             }
+//         }
+//     }
+// }
+
+def gv
+
 pipeline {
     agent any
 
     stages {
-        stage("init") {
+        stage("Load and Execute Groovy Script") {
             steps {
-                echo 'Hello world'
                 script {
-                   def gv = load "script.groovy"
-                    // gv.buildApp()
-                    // gv.testApp()
-                    // gv.deployApp()
+                    // Load the Groovy script
+                    def loadedScript = load "script.groovy"
+
+                    // Check if the buildApp method is defined in the loaded script
+                    if (loadedScript.respondsTo("buildApp")) {
+                        // Execute the buildApp method
+                        loadedScript.buildApp()
+                    } else {
+                        error "buildApp method not found in the loaded script"
+                    }
                 }
             }
         }
     }
 }
+
 
