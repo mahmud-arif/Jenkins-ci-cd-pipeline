@@ -90,6 +90,7 @@ pipeline {
                 script {
                     // Load the Groovy script
                     def loadedScript = load "script.groovy"
+                    loadedScript.buildApp()
 
                     // Check if the buildApp method is defined in the loaded script
                     if (loadedScript.respondsTo("buildApp")) {
