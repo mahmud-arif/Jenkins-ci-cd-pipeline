@@ -5,7 +5,7 @@ This branch contains a Jenkins pipeline written in Groovy for a Java Maven appli
 ## Jenkins Pipeline Stages
 <img src="pipeline-1.png" alt="Pipeline Illustration" width="50%"/>
 
-Pipline starts changes pushing to the branch
+Pipline starts when changes push to the branch jenkins-version-bump
 
 ### 1. Increment Version
 
