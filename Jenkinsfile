@@ -5,6 +5,9 @@ pipeline {
     // tools {
     //     maven 'Maven'
     // }
+    environment {
+        EXCLUDED_AUTHORS = 'jenkins@example.com'
+    }
     stages {
          stage('Check Commit Author') {
             steps {
