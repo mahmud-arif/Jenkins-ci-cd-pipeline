@@ -5,9 +5,6 @@ pipeline {
     // tools {
     //     maven 'Maven'
     // }
-    // environment {
-    //     DOCKER_REPO = "${DOCKER_REPO_SERVER}/java-maven-app"
-    // }
     stages {
         stage('increment version') {
             steps {
