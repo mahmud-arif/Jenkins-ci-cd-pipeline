@@ -6,6 +6,21 @@ pipeline {
     //     maven 'Maven'
     // }
     stages {
+         stage('Check Commit Author') {
+            steps {
+                script {
+                    def currentCommitAuthor = sh(script: 'git log -1 --pretty=format:%ae', returnStdout: true).trim()
+
+                    if (EXCLUDED_AUTHORS.split(',').contains(currentCommitAuthor)) {
+                        echo "Skipping build for commit author: ${currentCommitAuthor}"
+                        currentBuild.result = 'ABORTED'
+                        error("Build aborted for excluded commit author.")
+                    } else {
+                        echo "Proceeding with the build for commit author: ${currentCommitAuthor}"
+                    }
+                }
+            }
+        }
         stage('increment version') {
             steps {
                 script {
