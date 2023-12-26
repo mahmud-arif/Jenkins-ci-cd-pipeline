@@ -50,6 +50,7 @@ pipeline {
             steps {
                 script {
                     echo 'deploying docker image...'
+                    sh 'aws eks update-kubeconfig --region us-east-1 --name eks-demo'
                     sh 'envsubst < kubernetes/deployment.yaml | kubectl apply -f -'
                     sh 'envsubst < kubernetes/service.yaml | kubectl apply -f -'
                 }
